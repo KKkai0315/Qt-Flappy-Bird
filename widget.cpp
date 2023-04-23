@@ -11,10 +11,10 @@ Widget::Widget(QWidget *parent)
 
     scene = new Scene(this);
 
-    scene->setSceneRect(0,0,0,0);
+    scene->setSceneRect(0,0,432,644);
     QGraphicsPixmapItem* pixItem = new QGraphicsPixmapItem(QPixmap(":/new/prefix1/bg.png"));
     scene->addItem(pixItem);
-    pixItem->setPos(QPointF(0,0) -QPointF(pixItem->boundingRect().width(),pixItem->boundingRect().height()));
+    pixItem->setPos(QPointF(0,0) );
 
     PipeItem* pipe = new PipeItem;
     scene->addItem(pipe);
