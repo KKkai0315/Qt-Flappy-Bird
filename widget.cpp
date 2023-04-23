@@ -1,0 +1,27 @@
+#include "widget.h"
+#include "ui_widget.h"
+#include <QGraphicsPixmapItem>
+
+Widget::Widget(QWidget *parent)
+    : QWidget(parent)
+    , ui(new Ui::Widget)
+{
+    ui->setupUi(this);
+
+    scene = new Scene(this);
+
+    scene->setSceneRect(0,0,0,0);
+    QGraphicsPixmapItem* pixItem = new QGraphicsPixmapItem(QPixmap(":/new/prefix1/bg.png"));
+    scene->addItem(pixItem);
+    pixItem->setPos(QPointF(0,0) -QPointF(pixItem->boundingRect().width(),pixItem->boundingRect().height()));
+
+
+
+    ui->Box->setScene(scene);
+}
+
+Widget::~Widget()
+{
+    delete ui;
+}
+
