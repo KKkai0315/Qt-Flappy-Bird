@@ -1,7 +1,10 @@
 #ifndef SCENE_H
 #define SCENE_H
 
+#include <QDebug>
+#include <QTimer>
 #include <QGraphicsScene>
+#include "pipeitem.h"
 
 class Scene : public QGraphicsScene
 {
@@ -11,6 +14,11 @@ public:
 
 signals:
 
+private:
+    void setpipetimer();
+    QTimer* pipetimer;
+
+public slots:
 };
 
 #endif // SCENE_H

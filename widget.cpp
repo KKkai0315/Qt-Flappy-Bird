@@ -16,8 +16,6 @@ Widget::Widget(QWidget *parent)
     scene->addItem(pixItem);
     pixItem->setPos(QPointF(0,0) );
 
-    PipeItem* pipe = new PipeItem;
-    scene->addItem(pipe);
 
     ui->Box->setScene(scene);
 }

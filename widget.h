@@ -1,6 +1,7 @@
 #ifndef WIDGET_H
 #define WIDGET_H
 
+#include <QDebug>
 #include <QWidget>
 #include "scene.h"
 
