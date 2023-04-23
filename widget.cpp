@@ -1,5 +1,6 @@
 #include "widget.h"
 #include "ui_widget.h"
+#include "pipeitem.h"
 #include <QGraphicsPixmapItem>
 
 Widget::Widget(QWidget *parent)
@@ -15,7 +16,8 @@ Widget::Widget(QWidget *parent)
     scene->addItem(pixItem);
     pixItem->setPos(QPointF(0,0) -QPointF(pixItem->boundingRect().width(),pixItem->boundingRect().height()));
 
-
+    PipeItem* pipe = new PipeItem;
+    scene->addItem(pipe);
 
     ui->Box->setScene(scene);
 }

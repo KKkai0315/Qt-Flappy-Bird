@@ -17,10 +17,12 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     main.cpp \
+    pipeitem.cpp \
     scene.cpp \
     widget.cpp
 
 HEADERS += \
+    pipeitem.h \
     scene.h \
     widget.h
 
