@@ -9,21 +9,28 @@ class birditem : public QObject , public QGraphicsPixmapItem
 {
     Q_OBJECT
     Q_PROPERTY(qreal y READ y WRITE sety)
+    Q_PROPERTY(qreal rotation READ rotation WRITE setRotation)
 public:
     explicit birditem(QPixmap pixmap,QObject *parent = nullptr);
     void wings();
 
     qreal y() const;
 
+    qreal rotation() const;
+
 public slots:
 
     void sety(qreal y);
+
+    void setRotation(qreal rotation);
 
 private:
     bool wingdirect;//0 down 1 up
     int wingpos;//0 up 1 middle 2 down
     qreal m_y;
     QPropertyAnimation* yani;
+    QPropertyAnimation* rotationani;
+    qreal m_rotation;
 
 signals:
 };

@@ -10,12 +10,20 @@ birditem::birditem(QPixmap pixmap, QObject *parent) : QObject(parent),
     connect(wingtimer,&QTimer::timeout,[=](){wings();});
     wingtimer->start(100);
 
+    //设置鸟的坠落
     yani = new QPropertyAnimation(this,"y",this);
     yani->setStartValue(scenePos().y());
     yani->setEndValue(scenePos().y()+450);
     yani->setEasingCurve(QEasingCurve::InQuad);
     yani->setDuration(1000);
     yani->start();
+    //设置坠落时的体态——嘴朝地
+    rotationani = new QPropertyAnimation(this,"rotation",this);
+    rotationani->setStartValue(rotation());
+    rotationani->setEndValue(90);
+    rotationani->setEasingCurve(QEasingCurve::InQuad);
+    rotationani->setDuration(1200);
+    rotationani->start();
 
 }
 
@@ -54,6 +62,11 @@ qreal birditem::y() const
     return m_y;
 }
 
+qreal birditem::rotation() const
+{
+    return m_rotation;
+}
+
 
 void birditem::sety(qreal y)
 {
@@ -61,3 +74,10 @@ void birditem::sety(qreal y)
     m_y = y;
 }
 
+void birditem::setRotation(qreal rotation)
+{
+    m_rotation = rotation;
+    QPointF temp = boundingRect().center();
+    setTransformOriginPoint(temp);
+    QGraphicsItem::setRotation(rotation);
+}
