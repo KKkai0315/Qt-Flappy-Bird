@@ -12,7 +12,7 @@ public:
     void wings();
 private:
     bool wingdirect;//0 down 1 up
-    bool wingpos;//0 up 1 middle 2 down
+    int wingpos;//0 up 1 middle 2 down
 signals:
 };
 
