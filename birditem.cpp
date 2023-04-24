@@ -1,6 +1,7 @@
 #include "birditem.h"
 #include "ground.h"
 #include <QTimer>
+#include <QGraphicsScene>
 
 birditem::birditem(QPixmap pixmap, QObject *parent) : QObject(parent),
   wingdirect(0),wingpos(0),m_y(0)
@@ -9,11 +10,12 @@ birditem::birditem(QPixmap pixmap, QObject *parent) : QObject(parent),
     QTimer* wingtimer = new QTimer(this);
     connect(wingtimer,&QTimer::timeout,[=](){wings();});
     wingtimer->start(100);
+    groundline=scenePos().y()+450;
 
     //设置鸟的坠落
     yani = new QPropertyAnimation(this,"y",this);
     yani->setStartValue(scenePos().y());
-    yani->setEndValue(scenePos().y()+450);
+    yani->setEndValue(groundline);
     yani->setEasingCurve(QEasingCurve::InQuad);
     yani->setDuration(1000);
     yani->start();
@@ -67,6 +69,25 @@ qreal birditem::rotation() const
     return m_rotation;
 }
 
+void birditem::jump()
+{
+    yani->stop();
+    rotationani->stop();
+
+    connect(yani,&QPropertyAnimation::finished,[=]{falling();});
+    yani->setStartValue(y());
+    yani->setEndValue(y() - 80);
+    yani->setEasingCurve(QEasingCurve::OutQuad);
+    yani->setDuration(255);
+    yani->start();
+
+    rotationani->setStartValue(rotation());
+    rotationani->setEndValue(-20);
+    rotationani->setEasingCurve(QEasingCurve::OutCubic);
+    rotationani->setDuration(200);
+    rotationani->start();
+}
+
 
 void birditem::sety(qreal y)
 {
@@ -80,4 +101,24 @@ void birditem::setRotation(qreal rotation)
     QPointF temp = boundingRect().center();
     setTransformOriginPoint(temp);
     QGraphicsItem::setRotation(rotation);
+}
+
+void birditem::falling()
+{
+    if(y()<(this->scenePos().y()+450))
+    {
+    rotationani->stop();
+
+    yani->setStartValue(y());
+    yani->setEndValue(groundline);
+    yani->setEasingCurve(QEasingCurve::InQuad);
+    yani->setDuration(1100);
+    yani->start();
+
+    rotationani->setStartValue(rotation());
+    rotationani->setEndValue(90);
+    rotationani->setEasingCurve(QEasingCurve::InQuad);
+    rotationani->setDuration(1000);
+    rotationani->start();
+    }
 }

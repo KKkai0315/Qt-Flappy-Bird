@@ -18,11 +18,15 @@ public:
 
     qreal rotation() const;
 
+    void jump();
+
 public slots:
 
     void sety(qreal y);
 
     void setRotation(qreal rotation);
+
+    void falling();
 
 private:
     bool wingdirect;//0 down 1 up
@@ -31,6 +35,7 @@ private:
     QPropertyAnimation* yani;
     QPropertyAnimation* rotationani;
     qreal m_rotation;
+    qreal groundline;
 
 signals:
 };

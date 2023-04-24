@@ -1,8 +1,19 @@
 #include "scene.h"
+#include <QKeyEvent>
+#include <birditem.h>
 
 Scene::Scene(QObject *parent) : QGraphicsScene(parent)
 {
     setpipetimer();
+
+
+}
+
+void Scene::birddef()
+{
+    bird = new birditem(QPixmap(":/new/prefix1/0.png"));
+    addItem(bird);
+    bird->setZValue(20);
 }
 
 void Scene::setpipetimer()
@@ -13,4 +24,12 @@ void Scene::setpipetimer()
      addItem(pipe);
  });
  pipetimer->start(2000);
+}
+
+void Scene::keyPressEvent(QKeyEvent *event)
+{
+if(event->key()==Qt::Key_Space){
+    bird->jump();
+}
+QGraphicsScene::keyPressEvent(event);
 }
