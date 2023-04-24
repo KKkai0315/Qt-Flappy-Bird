@@ -1,6 +1,7 @@
 #include "widget.h"
 #include "ui_widget.h"
 #include "pipeitem.h"
+#include "birditem.h"
 #include <QGraphicsPixmapItem>
 
 Widget::Widget(QWidget *parent)
@@ -15,8 +16,8 @@ Widget::Widget(QWidget *parent)
     QGraphicsPixmapItem* pixItem = new QGraphicsPixmapItem(QPixmap(":/new/prefix1/bg.png"));
     scene->addItem(pixItem);
     pixItem->setPos(QPointF(0,0) );
-
-
+    birditem* bird = new birditem(QPixmap(":/new/prefix1/0.png"));
+    scene->addItem(bird);
     ui->Box->setScene(scene);
 }
 
