@@ -2,7 +2,7 @@
 #include <QTimer>
 
 birditem::birditem(QPixmap pixmap, QObject *parent) : QObject(parent),
-  wingdirect(0)
+  wingdirect(0),wingpos(0)
 {
     setPixmap(pixmap);
     QTimer* wingtimer = new QTimer(this);
