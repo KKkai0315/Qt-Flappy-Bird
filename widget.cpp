@@ -26,7 +26,6 @@ scene->birddef();
 
     ui->Box->setScene(scene);
 }
-
 Widget::~Widget()
 {
     delete ui;

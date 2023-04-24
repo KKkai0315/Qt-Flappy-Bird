@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <birditem.h>
 #include "pipeitem.h"
+#include <QGraphicsPixmapItem>
 
 class Scene : public QGraphicsScene
 {
@@ -21,6 +22,8 @@ private:
     void setpipetimer();
     QTimer* pipetimer;
     birditem* bird;
+    QGraphicsPixmapItem* startImage;
+    bool startsign;
 
 public slots:
 
