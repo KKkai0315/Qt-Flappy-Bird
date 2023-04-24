@@ -20,6 +20,8 @@ public:
 
     void jump();
 
+    void birdstart();
+
 public slots:
 
     void sety(qreal y);

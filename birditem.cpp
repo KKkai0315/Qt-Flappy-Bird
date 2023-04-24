@@ -18,14 +18,14 @@ birditem::birditem(QPixmap pixmap, QObject *parent) : QObject(parent),
     yani->setEndValue(groundline);
     yani->setEasingCurve(QEasingCurve::InQuad);
     yani->setDuration(1000);
-    yani->start();
+
     //设置坠落时的体态——嘴朝地
     rotationani = new QPropertyAnimation(this,"rotation",this);
     rotationani->setStartValue(rotation());
     rotationani->setEndValue(90);
     rotationani->setEasingCurve(QEasingCurve::InQuad);
     rotationani->setDuration(1200);
-    rotationani->start();
+
 
 }
 
@@ -85,6 +85,12 @@ void birditem::jump()
     rotationani->setEndValue(-20);
     rotationani->setEasingCurve(QEasingCurve::OutCubic);
     rotationani->setDuration(200);
+    rotationani->start();
+}
+
+void birditem::birdstart()
+{
+    yani->start();
     rotationani->start();
 }
 

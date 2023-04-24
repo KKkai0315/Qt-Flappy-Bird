@@ -16,6 +16,14 @@ void Scene::birddef()
     bird->setZValue(20);
 }
 
+void Scene::mainstart()
+{
+bird->birdstart();
+if(!pipetimer->isActive()){
+    pipetimer->start(2000);
+}
+}
+
 void Scene::setpipetimer()
 {
  pipetimer = new QTimer(this);
@@ -23,7 +31,6 @@ void Scene::setpipetimer()
      PipeItem* pipe = new PipeItem;
      addItem(pipe);
  });
- pipetimer->start(2000);
 }
 
 void Scene::keyPressEvent(QKeyEvent *event)

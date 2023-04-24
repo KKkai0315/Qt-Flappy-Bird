@@ -13,6 +13,7 @@ class Scene : public QGraphicsScene
 public:
     explicit Scene(QObject *parent = nullptr);
     void birddef();
+    void mainstart();
 
 signals:
 
