@@ -17,6 +17,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     birditem.cpp \
+    ground.cpp \
     main.cpp \
     pipeitem.cpp \
     scene.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
 
 HEADERS += \
     birditem.h \
+    ground.h \
     pipeitem.h \
     scene.h \
     widget.h
