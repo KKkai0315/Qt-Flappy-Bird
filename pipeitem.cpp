@@ -4,13 +4,13 @@
 PipeItem::PipeItem() :
     apipe(new QGraphicsPixmapItem(QPixmap(":/new/prefix1/pipe.png")))
 {
-    ramy=-(200+rand()%(500-200+1));
+    ramy=-(200+rand()%(480-200+1));
     apipe->setPos(500,ramy);
     xani = new QPropertyAnimation(this,"x",this);
-    xani->setStartValue(500);
+    xani->setStartValue(480);
     xani->setEndValue(-200);
     xani->setEasingCurve(QEasingCurve::Linear);
-    xani->setDuration(2000);
+    xani->setDuration(3000);
     connect(xani, &QPropertyAnimation::finished, [=](){
         scene()->removeItem(this);
         delete this;

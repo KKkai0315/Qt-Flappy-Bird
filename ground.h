@@ -2,16 +2,19 @@
 #define GROUND_H
 
 #include <QObject>
+#include <QGraphicsPixmapItem>
 
-class ground : public QObject
+class groundItem : public QObject, public QGraphicsPixmapItem
 {
     Q_OBJECT
+    Q_PROPERTY(qreal groundx READ groundx WRITE setgroundx)
+    qreal m_groundx;
+
 public:
-    explicit ground(QObject *parent = nullptr);
-    qreal groundpos;
-
-signals:
-
+explicit groundItem(QObject *parent = nullptr);
+qreal groundx() const;
+public slots:
+void setgroundx(qreal groundx);
 };
 
 #endif // GROUND_H

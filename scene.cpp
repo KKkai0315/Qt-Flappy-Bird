@@ -12,5 +12,5 @@ void Scene::setpipetimer()
      PipeItem* pipe = new PipeItem;
      addItem(pipe);
  });
- pipetimer->start(1000);
+ pipetimer->start(2000);
 }
