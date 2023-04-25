@@ -3,7 +3,7 @@
 #include <birditem.h>
 #include "ground.h"
 
-Scene::Scene(QObject *parent) : QGraphicsScene(parent),startsign(0)
+Scene::Scene(QObject *parent) : QGraphicsScene(parent),startsign(0),gameoverbool(0),score(0)
 {
     setpipetimer();
     startImage = new QGraphicsPixmapItem(QPixmap(":/new/prefix1/start.png"));
@@ -52,6 +52,7 @@ void Scene::setpipetimer()
 
 void Scene::gameover()
 {
+    gameoverbool=1;
     bird->birdstop();
     ground->groundstop();
     QList<QGraphicsItem*> sceneItems = items();
@@ -68,8 +69,10 @@ void Scene::keyPressEvent(QKeyEvent *event)
 {
     if(startsign==0)
         mainstart();
+    if(!gameoverbool){
 if(event->key()==Qt::Key_Space){
     bird->jump();
 }
+    }
 QGraphicsScene::keyPressEvent(event);
 }

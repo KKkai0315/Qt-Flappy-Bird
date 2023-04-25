@@ -27,6 +27,8 @@ private:
     bool startsign;
     void gameover();
     groundItem* ground;
+    bool gameoverbool;
+    int score;
 
 public slots:
 
