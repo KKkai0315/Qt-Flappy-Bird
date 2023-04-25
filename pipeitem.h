@@ -33,6 +33,7 @@ private:
     qreal m_x;
     QPropertyAnimation* xani;
     int ramy;
+    bool pass;
 };
 
 #endif // PIPEITEM_H

@@ -1,9 +1,10 @@
 #include "pipeitem.h"
 #include <birditem.h>
+#include "scene.h"
 #include <QPointF>
 #include <time.h>
 PipeItem::PipeItem() :
-    apipe(new QGraphicsPixmapItem(QPixmap(":/new/prefix1/pipe.png")))
+    apipe(new QGraphicsPixmapItem(QPixmap(":/new/prefix1/pipe.png"))),pass(0)
 {
     ramy=-(200+rand()%(480-200+1));
     apipe->setPos(500,ramy);
@@ -37,6 +38,14 @@ void PipeItem::pipestop()
 void PipeItem::setX(qreal x)
 {
     m_x = x;
+    if(x<0&&!pass){
+        pass=1;
+        QGraphicsScene* nowscene=scene();
+                Scene* myscene = dynamic_cast<Scene *>(nowscene);
+                if(nowscene){
+                    myscene->Scoreadd();
+                }
+    }
     if(collision()){
         emit collidesignal();
     }

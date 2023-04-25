@@ -16,6 +16,7 @@ public:
     explicit Scene(QObject *parent = nullptr);
     void birddef();
     void mainstart();
+    void Scoreadd();
 
 signals:
 
@@ -24,11 +25,14 @@ private:
     QTimer* pipetimer;
     birditem* bird;
     QGraphicsPixmapItem* startImage;
+    QGraphicsPixmapItem* gameoverImage;
     bool startsign;
     void gameover();
     groundItem* ground;
     bool gameoverbool;
     int score;
+    QGraphicsTextItem* scoretext;
+    void showscore();
 
 public slots:
 

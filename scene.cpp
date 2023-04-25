@@ -11,6 +11,10 @@ Scene::Scene(QObject *parent) : QGraphicsScene(parent),startsign(0),gameoverbool
     startImage->setPos(0,0);
     startImage->setZValue(100);
 
+    gameoverImage = new QGraphicsPixmapItem(QPixmap(":/new/prefix1/gameover.png"));
+
+
+
     ground = new groundItem;
        addItem(ground);
           ground->setZValue(10); // 设置Z值为10，放在最上面
@@ -34,6 +38,11 @@ if(!pipetimer->isActive()){
 }
 }
 
+void Scene::Scoreadd()
+{
+    score++;
+}
+
 void Scene::setpipetimer()
 {
  pipetimer = new QTimer(this);
@@ -55,6 +64,10 @@ void Scene::gameover()
     gameoverbool=1;
     bird->birdstop();
     ground->groundstop();
+    showscore();
+    addItem(gameoverImage);
+    gameoverImage->setPos(0,0);
+    gameoverImage->setZValue(100);
     QList<QGraphicsItem*> sceneItems = items();
         for(int i=0; i<sceneItems.size(); i++){
             PipeItem * pipe = qgraphicsitem_cast<PipeItem*>(sceneItems[i]);
@@ -63,6 +76,19 @@ void Scene::gameover()
             }
         }
         pipetimer->stop();
+}
+
+void Scene::showscore()
+{
+    scoretext = new QGraphicsTextItem();
+    QString lastscore="Your Score:" + QString::number(score);
+    scoretext->setHtml(lastscore);
+    QFont font("Consolas",20,QFont::Bold);
+    scoretext->setFont(font);
+    QColor color(126,12,110);
+    scoretext->setDefaultTextColor(color);
+    addItem(scoretext);
+    scoretext->setPos(35 ,280);
 }
 
 void Scene::keyPressEvent(QKeyEvent *event)
