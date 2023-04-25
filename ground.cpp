@@ -9,6 +9,7 @@
     {
         setPos(0, 500);
 
+        //生成地面向左移动的动画
         groundani = new QPropertyAnimation(this, "groundx", this);
         groundani->setStartValue(0);
         groundani->setEndValue(-100);

@@ -24,6 +24,7 @@ public slots:
 
 signals:
     void collidesignal();
+    //检测碰撞信号
 
 private slots:
 

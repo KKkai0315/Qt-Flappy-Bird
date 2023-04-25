@@ -26,6 +26,7 @@ private:
     birditem* bird;
     QGraphicsPixmapItem* startImage;
     QGraphicsPixmapItem* gameoverImage;
+    QGraphicsPixmapItem* nankaiImage;
     bool startsign;
     void gameover();
     groundItem* ground;

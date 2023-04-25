@@ -15,7 +15,9 @@ class groundItem : public QObject, public QGraphicsPixmapItem
 public:
 explicit groundItem(QObject *parent = nullptr);
 qreal groundx() const;
+//地面当前位置
 QPropertyAnimation* groundani;
+//让地面从右往左进行移动
 
 public slots:
 void setgroundx(qreal groundx);

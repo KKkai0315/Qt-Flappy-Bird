@@ -13,11 +13,11 @@ class birditem : public QObject , public QGraphicsPixmapItem
 public:
     explicit birditem(QPixmap pixmap,QObject *parent = nullptr);
     void wings();
-
+    //处理鸟的翅膀扇动动画
     qreal y() const;
-
+    //鸟的当前位置
     qreal rotation() const;
-
+    //鸟的当前旋转角度
     void jump();
 
     void birdstart();
@@ -25,7 +25,7 @@ public:
     void birdstop();
 
     bool collision();
-
+    //判断鸟是否与其他物体相撞
 
 public slots:
 
@@ -38,9 +38,9 @@ public slots:
 private:
     bool wingdirect;//0 down 1 up
     int wingpos;//0 up 1 middle 2 down
-    qreal m_y;
     QPropertyAnimation* yani;
     QPropertyAnimation* rotationani;
+    qreal m_y;
     qreal m_rotation;
     qreal groundline;
 

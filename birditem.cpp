@@ -7,9 +7,13 @@ birditem::birditem(QPixmap pixmap, QObject *parent) : QObject(parent),
   wingdirect(0),wingpos(0),m_y(0)
 {
     setPixmap(pixmap);
+
+    //设置定时器 让鸟翅膀扇动
     QTimer* wingtimer = new QTimer(this);
     connect(wingtimer,&QTimer::timeout,[=](){wings();});
     wingtimer->start(100);
+
+    //计算地面位置
     groundline=scenePos().y()+450;
 
     //设置鸟的坠落
@@ -29,6 +33,7 @@ birditem::birditem(QPixmap pixmap, QObject *parent) : QObject(parent),
 
 }
 
+//扇动翅膀函数
 void birditem::wings()
 {
     if(wingpos==0)
@@ -74,13 +79,17 @@ void birditem::jump()
     yani->stop();
     rotationani->stop();
 
+    //让鸟跳跃完成后自然下坠
     connect(yani,&QPropertyAnimation::finished,[=]{falling();});
+
+    //设置鸟的跳跃动画
     yani->setStartValue(y());
     yani->setEndValue(y() - 80);
     yani->setEasingCurve(QEasingCurve::OutQuad);
     yani->setDuration(255);
     yani->start();
 
+    //设置鸟的跳跃旋转动画
     rotationani->setStartValue(rotation());
     rotationani->setEndValue(-20);
     rotationani->setEasingCurve(QEasingCurve::InOutQuad);
@@ -100,6 +109,7 @@ void birditem::birdstop()
     rotationani->stop();
 }
 
+//碰撞检测函数
 bool birditem::collision()
 {
     QList<QGraphicsItem*> collidingItems = this->collidingItems();
@@ -118,12 +128,16 @@ bool birditem::collision()
 void birditem::sety(qreal y)
 {
     setPos(this->pos().x(),y);
+
+    //若碰撞地板 则发出碰撞信号
     if(collision()){
         emit collidesignal2();
     }
+
     m_y = y;
 }
 
+//将旋转中心放置鸟图元中心
 void birditem::setRotation(qreal rotation)
 {
     m_rotation = rotation;
@@ -132,6 +146,7 @@ void birditem::setRotation(qreal rotation)
     QGraphicsItem::setRotation(rotation);
 }
 
+//鸟的自然下坠
 void birditem::falling()
 {
     if(y()<(this->scenePos().y()+450))

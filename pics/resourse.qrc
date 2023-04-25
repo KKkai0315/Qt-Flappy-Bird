@@ -8,5 +8,6 @@
         <file>ground.png</file>
         <file>pipe.png</file>
         <file>start.png</file>
+        <file>nankai.png</file>
     </qresource>
 </RCC>
