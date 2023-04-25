@@ -1,4 +1,5 @@
 #include "ground.h"
+#include "birditem.h"
 #include <QPixmap>
 #include <QTimer>
 #include <QPropertyAnimation>
@@ -21,6 +22,7 @@
     {
         return m_groundx;
     }
+
 
     void groundItem::setgroundx(qreal groundx)
     {

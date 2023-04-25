@@ -83,7 +83,7 @@ void birditem::jump()
 
     rotationani->setStartValue(rotation());
     rotationani->setEndValue(-20);
-    rotationani->setEasingCurve(QEasingCurve::OutCubic);
+    rotationani->setEasingCurve(QEasingCurve::InOutQuad);
     rotationani->setDuration(200);
     rotationani->start();
 }
@@ -100,10 +100,27 @@ void birditem::birdstop()
     rotationani->stop();
 }
 
+bool birditem::collision()
+{
+    QList<QGraphicsItem*> collidingItems = this->collidingItems();
+      foreach (QGraphicsItem * item , collidingItems){
+          groundItem * groundtemp = dynamic_cast<groundItem*>(item);
+          if(groundtemp){
+              return true;
+          }
+      }
+      return false;
+
+}
+
+
 
 void birditem::sety(qreal y)
 {
     setPos(this->pos().x(),y);
+    if(collision()){
+        emit collidesignal2();
+    }
     m_y = y;
 }
 

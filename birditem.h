@@ -24,6 +24,9 @@ public:
 
     void birdstop();
 
+    bool collision();
+
+
 public slots:
 
     void sety(qreal y);
@@ -42,6 +45,7 @@ private:
     qreal groundline;
 
 signals:
+    void collidesignal2();
 };
 
 #endif // BIRDITEM_H

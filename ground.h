@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QGraphicsPixmapItem>
 #include <QPropertyAnimation>
+#include "birditem.h"
 
 class groundItem : public QObject, public QGraphicsPixmapItem
 {
@@ -20,6 +21,7 @@ public slots:
 void setgroundx(qreal groundx);
 void groundstop();
 
+signals:
 };
 
 #endif // GROUND_H

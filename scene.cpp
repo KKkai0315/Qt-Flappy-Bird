@@ -43,6 +43,9 @@ void Scene::setpipetimer()
          pipetimer->stop();
          gameover();
      });
+     connect(bird,&birditem::collidesignal2,[=](){
+         gameover();
+     });
      addItem(pipe);
  });
 }
@@ -58,6 +61,7 @@ void Scene::gameover()
                 pipe->pipestop();
             }
         }
+        pipetimer->stop();
 }
 
 void Scene::keyPressEvent(QKeyEvent *event)
