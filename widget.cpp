@@ -19,9 +19,7 @@ Widget::Widget(QWidget *parent)
     scene->addItem(pixItem);
     pixItem->setPos(QPointF(0,0) );
 
-    groundItem* ground = new groundItem;
-       scene->addItem(ground);
-          ground->setZValue(10); // 设置Z值为10，放在最上面
+
 scene->birddef();
 
     ui->Box->setScene(scene);

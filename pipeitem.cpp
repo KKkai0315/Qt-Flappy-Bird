@@ -1,4 +1,5 @@
 #include "pipeitem.h"
+#include <birditem.h>
 #include <QPointF>
 #include <time.h>
 PipeItem::PipeItem() :
@@ -28,8 +29,28 @@ qreal PipeItem::x() const
     return m_x;
 }
 
+void PipeItem::pipestop()
+{
+    xani->stop();
+}
+
 void PipeItem::setX(qreal x)
 {
     m_x = x;
+    if(collision()){
+        emit collidesignal();
+    }
     setPos(x,ramy);
+}
+
+bool PipeItem::collision()
+{
+    QList<QGraphicsItem*> collidingItems = apipe->collidingItems();
+      foreach (QGraphicsItem * item , collidingItems){
+          birditem * birdie = dynamic_cast<birditem*>(item);
+          if(birdie){
+              return true;
+          }
+      }
+      return false;
 }

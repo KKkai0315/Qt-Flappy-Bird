@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QGraphicsPixmapItem>
+#include <QPropertyAnimation>
 
 class groundItem : public QObject, public QGraphicsPixmapItem
 {
@@ -13,8 +14,12 @@ class groundItem : public QObject, public QGraphicsPixmapItem
 public:
 explicit groundItem(QObject *parent = nullptr);
 qreal groundx() const;
+QPropertyAnimation* groundani;
+
 public slots:
 void setgroundx(qreal groundx);
+void groundstop();
+
 };
 
 #endif // GROUND_H

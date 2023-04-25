@@ -17,14 +17,18 @@ public:
 
     qreal x() const;
 
+    void pipestop();
+
 public slots:
     void setX(qreal x);
 
 signals:
+    void collidesignal();
 
 private slots:
 
 private:
+    bool collision();
     QGraphicsPixmapItem* apipe;
     qreal m_x;
     QPropertyAnimation* xani;

@@ -22,6 +22,8 @@ public:
 
     void birdstart();
 
+    void birdstop();
+
 public slots:
 
     void sety(qreal y);

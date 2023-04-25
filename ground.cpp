@@ -8,7 +8,7 @@
     {
         setPos(0, 500);
 
-        QPropertyAnimation* groundani = new QPropertyAnimation(this, "groundx", this);
+        groundani = new QPropertyAnimation(this, "groundx", this);
         groundani->setStartValue(0);
         groundani->setEndValue(-100);
         groundani->setDuration(1000);
@@ -26,4 +26,9 @@
     {
         m_groundx = groundx;
         setPos(groundx, y());
+    }
+
+    void groundItem::groundstop()
+    {
+        groundani->stop();
     }

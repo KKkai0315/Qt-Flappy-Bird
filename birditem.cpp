@@ -94,6 +94,12 @@ void birditem::birdstart()
     rotationani->start();
 }
 
+void birditem::birdstop()
+{
+    yani->stop();
+    rotationani->stop();
+}
+
 
 void birditem::sety(qreal y)
 {

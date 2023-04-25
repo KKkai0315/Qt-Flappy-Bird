@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <birditem.h>
 #include "pipeitem.h"
+#include "ground.h"
 #include <QGraphicsPixmapItem>
 
 class Scene : public QGraphicsScene
@@ -24,6 +25,8 @@ private:
     birditem* bird;
     QGraphicsPixmapItem* startImage;
     bool startsign;
+    void gameover();
+    groundItem* ground;
 
 public slots:
 
