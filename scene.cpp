@@ -7,6 +7,7 @@ Scene::Scene(QObject *parent) : QGraphicsScene(parent),startsign(0),gameoverbool
 {
     setpipetimer();
     //水管定时器 用于定时间间隔生成新水管
+
     startImage = new QGraphicsPixmapItem(QPixmap(":/new/prefix1/start.png"));
     addItem(startImage);
     startImage->setPos(0,0);
