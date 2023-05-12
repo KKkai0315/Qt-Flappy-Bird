@@ -84,7 +84,7 @@ void birditem::jump()
 
     //设置鸟的跳跃动画
     yani->setStartValue(y());
-    yani->setEndValue(y() - 80);
+    yani->setEndValue(y() - 75);
     yani->setEasingCurve(QEasingCurve::OutQuad);
     yani->setDuration(255);
     yani->start();
